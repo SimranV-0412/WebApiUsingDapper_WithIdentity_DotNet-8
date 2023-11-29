@@ -10,7 +10,6 @@ namespace WebApiUsingIdentity.DAL
     {
         private readonly string _connectionString;
         private readonly IConfiguration _config;
-
         public ProductRepo(IConfiguration configuration)
         {
             _config = configuration;

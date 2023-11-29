@@ -24,4 +24,9 @@
         public bool CoDAvailable { get; set; }
         public double ApproxWeight { get; set; }
     }
+
+    public class TopRatedProductsResponse
+    {
+        public List<Product_v2> topRatedProducts { get; set; }
+    }
 }
