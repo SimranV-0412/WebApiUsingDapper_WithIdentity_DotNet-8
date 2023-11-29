@@ -7,6 +7,9 @@ namespace WebApiUsingIdentity.DAL.Interface
     {
         public Task<IEnumerable<Product>> GetAllProducts();
         Task<int> AddProduct(AddProduct addproduct);
+    }
+    public interface IContactUs
+    {
         Task<int> AddContactUs(ContactUs contactUs);
     }
     public interface IProductRepository

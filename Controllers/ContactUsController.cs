@@ -10,15 +10,11 @@ namespace WebApiUsingIdentity.Controllers
     public class ContactUsController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        //public readonly IContactUs _ContactUs;
-        public readonly IProduct _Product;
-        //public ContactUsController(IContactUs ContactUs)
-        //{
-        //    _ContactUs = ContactUs;
-        //}
-        public ContactUsController(IProduct Product)
+        public readonly IContactUs _ContactUs;
+        
+        public ContactUsController(IContactUs ContactUs)
         {
-            _Product = Product;
+            _ContactUs = ContactUs;
         }
 
         [HttpPost]
@@ -28,7 +24,7 @@ namespace WebApiUsingIdentity.Controllers
             int result = 0;
             try
             {
-                result = await _Product.AddContactUs(contactUs);
+                result = await _ContactUs.AddContactUs(contactUs);
                 if (result == 1)
                 {
                     return Ok("Values are inserted");
