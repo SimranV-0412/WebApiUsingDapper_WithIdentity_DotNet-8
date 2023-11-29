@@ -15,12 +15,31 @@ namespace WebApiUsingIdentity.Controllers
             _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
         }
 
-        [HttpGet("TopRatedProducts/{userId}")]
-        public async Task<IActionResult> GetTopRatedProducts_v2(string userId)
+        //[HttpGet("GetTopRatedProduct_v2")]
+        //public async Task<IActionResult> GetTopRatedProducts_v2(string userId)
+        //{
+        //    try
+        //    {
+        //        var topRatedProducts = await _productRepository.GetTopRatedProduct_v2(userId);
+        //        if (topRatedProducts == null || topRatedProducts.Count == 0)
+        //        {
+        //            return NotFound("No top-rated products found.");
+        //        }
+
+        //        return Ok(topRatedProducts);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception or handle it as needed
+        //        return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving top-rated products.");
+        //    }
+        //}
+        [HttpGet("GetTopRatedProduct_v2")]
+        public async Task<IActionResult> GetTopRatedProducts_v2()
         {
             try
             {
-                var topRatedProducts = await _productRepository.GetTopRatedProduct_v2(userId);
+                var topRatedProducts = await _productRepository.GetTopRatedProduct_v2();
                 if (topRatedProducts == null || topRatedProducts.Count == 0)
                 {
                     return NotFound("No top-rated products found.");
@@ -34,6 +53,7 @@ namespace WebApiUsingIdentity.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving top-rated products.");
             }
         }
+
 
     }
 

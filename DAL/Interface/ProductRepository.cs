@@ -15,7 +15,30 @@ namespace WebApiUsingIdentity.DAL.Interface
             _config = configuration;
             _connectionString = _config.GetConnectionString("GoPure");
         }
-        public async Task<List<Product_v2>> GetTopRatedProduct_v2(string userId)
+        //public async Task<List<Product_v2>> GetTopRatedProduct_v2(string userId)
+        //{
+        //    try
+        //    {
+        //        using (var connection = new SqlConnection(_connectionString))
+        //        {
+        //            await connection.OpenAsync();
+
+        //            var parameters = new { UserId = userId };
+        //            var products = await connection.QueryAsync<Product_v2>(
+        //                "GetTopRatedProduct_v2",
+        //                parameters,
+        //                commandType: CommandType.StoredProcedure
+        //            );
+
+        //            return products.AsList();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //}
+        public async Task<List<Product_v2>> GetTopRatedProduct_v2()
         {
             try
             {
@@ -23,10 +46,8 @@ namespace WebApiUsingIdentity.DAL.Interface
                 {
                     await connection.OpenAsync();
 
-                    var parameters = new { UserId = userId };
                     var products = await connection.QueryAsync<Product_v2>(
                         "GetTopRatedProduct_v2",
-                        parameters,
                         commandType: CommandType.StoredProcedure
                     );
 
@@ -38,5 +59,6 @@ namespace WebApiUsingIdentity.DAL.Interface
                 throw;
             }
         }
+
     }
 }

@@ -11,7 +11,7 @@ namespace WebApiUsingIdentity.DAL.Interface
     }
     public interface IProductRepository
     {
-        Task<List<Product_v2>> GetTopRatedProduct_v2(string userId);
+        Task<List<Product_v2>> GetTopRatedProduct_v2();
         // Other methods for CRUD operations, filtering, etc.
     }
 
