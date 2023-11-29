@@ -9,4 +9,10 @@ namespace WebApiUsingIdentity.DAL.Interface
         Task<int> AddProduct(AddProduct addproduct);
         Task<int> AddContactUs(ContactUs contactUs);
     }
+    public interface IProductRepository
+    {
+        Task<List<Product_v2>> GetTopRatedProduct_v2(string userId);
+        // Other methods for CRUD operations, filtering, etc.
+    }
+
 }
