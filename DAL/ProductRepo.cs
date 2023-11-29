@@ -58,5 +58,28 @@ namespace WebApiUsingIdentity.DAL
                 return 0;
             }
         }
+        public async Task<int> AddContactUs(ContactUs contactUs)
+        {
+            int result = 0;
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    var procedure = "InsertContactUs";
+                    var values = new
+                    {
+                        Name = contactUs.Name,
+                        Email = contactUs.Email,
+                        Message = contactUs.Message,
+                    };
+                    result = await connection.QueryFirstOrDefaultAsync<int>(procedure, values, commandType: CommandType.StoredProcedure);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
     }
 }

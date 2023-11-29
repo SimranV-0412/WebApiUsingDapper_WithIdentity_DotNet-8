@@ -10,11 +10,17 @@ namespace WebApiUsingIdentity.Controllers
     public class ContactUsController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        public readonly IContactUs _ContactUs;
-        public ContactUsController(IContactUs ContactUs)
+        //public readonly IContactUs _ContactUs;
+        public readonly IProduct _Product;
+        //public ContactUsController(IContactUs ContactUs)
+        //{
+        //    _ContactUs = ContactUs;
+        //}
+        public ContactUsController(IProduct Product)
         {
-            _ContactUs = ContactUs;
+            _Product = Product;
         }
+
         [HttpPost]
         [Route("AddContactUs")]
         public async Task<IActionResult> AddContactUs(ContactUs contactUs)
@@ -22,7 +28,7 @@ namespace WebApiUsingIdentity.Controllers
             int result = 0;
             try
             {
-                result = await _ContactUs.AddContactUs(contactUs);
+                result = await _Product.AddContactUs(contactUs);
                 if (result == 1)
                 {
                     return Ok("Values are inserted");
